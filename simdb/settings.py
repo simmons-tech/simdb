@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'oidc_auth',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,28 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'oidc_auth.auth.OpenIDConnectBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+LOGIN_URL = '/oidc/login/'
+LOGIN_REDIRECT_URL = '/'
+
+OIDC_AUTH = {
+    'DEFAULT_PROVIDER': {
+        'issuer': 'https://oidc.mit.edu/',
+        'authorization_endpoint': 'https://oidc.mit.edu/authorize',
+        'token_endpoint': 'https://oidc.mit.edu/token',
+        'userinfo_endpoint': 'https://oidc.mit.edu/userinfo',
+        'jwks_uri': 'https://oidc.mit.edu/jwk',
+        'signing_alg': 'RS256',
+        'client_id': os.getenv('OIDC_CLIENT_ID'),
+        'client_secret': os.getenv('OIDC_CLIENT_SECRET'),
+    },
+    'SCOPES': ('openid', 'profile', 'email'),
+}
 
 ROOT_URLCONF = 'simdb.urls'
 
