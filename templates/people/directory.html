@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}Simmons DB{% endblock %}
+{% block pagetitle %}About the Simmons DB{% endblock %}
+
+{% block content %}
+
+{% if results %}
+  <b>{{ results|length }} user{{ results|pluralize }} matched your query.</b><br/>
+
+<table border="1" style="empty-cells: show">
+  <tr bgcolor="#FFBBBB">
+    <th>Last name</th>
+    <th>First name</th>
+    <th>Title</th>
+    <th>Username</th>
+    <th>Room</th>
+    <th>Year</th>
+  </tr>
+  {% for user in results %}
+  <tr>
+    <td><a tabindex='1' href="{% url 'directory_entry' user.username %}"></a></td>
+  </tr>
+  {% endfor %}
+</table><br /><hr /><br />
+{% endif %}
+
+<form action="{% url 'directory' %}" method="post">
+{% csrf_token %}
+<table>
+  
+  <tr>
+    <td align="right">Firstname:</td>
+    <td><input name="firstname" type="text" size="12" autofocus /></td>
+  </tr>
+
+  <tr>
+    <td align="right">Lastname:</td>
+    <td><input name="lastname" type="text" size="12" /></td>
+  </tr>
+
+  <tr>
+    <td align="right">Title:</td>
+    <td><input name="title" type="text" size="12" /></td>
+  </tr>
+
+  <tr>
+    <td align="right">Username:</td>
+    <td><input name="username" type="text" size="12" /></td>
+  </tr>
+
+  <tr>
+    <td align="right">Room:</td>
+    <td><input name="room" type="text" size="12" /></td>
+  </tr>
+
+  <tr>
+    <td align="right">Year:</td>
+    <td>
+      <select name="cyear" size="1">
+        <option selected="selected">[Any]</option>
+        <option>2017</option>
+        <option>2018</option>
+        <option>2019</option>
+        <option>2020</option>
+        <option>No year</option>
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right">Lounge:</td>
+    <td>
+      <select name="lounge" size="1">
+        <option selected="selected">[Any]</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td align="right">GRT:</td>
+    <td>
+      <select name="grt" size="1">
+        <option selected="selected">[Any]</option>
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>
+      <input type="submit" name="search" value="Search">
+    </td>
+  </tr>
+</table>
+</form>
+<p>Enter data in any or all of the above fields.  '%' matches anything -
+   e.g. username 'dram%' matches 'dramage'.</p>
+{% endblock %}
