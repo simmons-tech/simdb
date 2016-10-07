@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Simmons DB{% endblock %}
+{% block pagetitle %}Welcome to the Simmons DB{% endblock %}
+
+{% block content %}
+<div align="center">
+  <h2>15 Seconds Of Frame</h2>
+  <p style="margin-top:0;font-style:italic"><a href="directory/">Simmons Hall Resident</a> of the Moment</p>
+
+  <table border='1'>
+    <tr>
+      <td colspan='2'><p align='center'>
+        <b><a href="directory/entry.php?username=aliciacm"> Alicia Cabrera-Mino</a></b> <br />
+      </p></td>
+    </tr>
+    <tr>
+      <td>
+        <table width='100%'>
+          <tr><td align="right">Year:</td> <td>2017</td></tr>
+          <tr><td align="right">Hometown:</td> <td>San Diego  </td></tr>
+          <tr><td align="right">Favorite color:</td> <td>blue</td></tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<p>
+  Welcome to Simmons DB, a magical play land of mystery and fun.  If you have
+  trouble with something, email
+  <a href="mailto:simmons-tech@mit.edu">simmons-tech@mit.edu</a>, your
+  friendly, teddy-bear-like guide to all things simmons-tech.
+</p>
+{% endblock %}

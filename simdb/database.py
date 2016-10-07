@@ -10,9 +10,9 @@ engines = {
 }
 
 
-def config(service_name = 'DEFAULT'):
+def config(service_name='DEFAULT'):
     """Get Django Database configuration parameters for the given service. This
-    function looks in the environment for parameters for the form
+    function looks in the environment for parameters of the form
     <service_name>_DATABASE_<config> and uses those values for the django DB
     configs
 
@@ -23,7 +23,9 @@ def config(service_name = 'DEFAULT'):
     Returns:
         The Django database configuration for the given service name
     """
-    engine = engines.get(os.getenv('{}_DATABASE_ENGINE'.format(service_name)), engines['sqlite'])
+    engine = engines.get(
+        os.getenv('{}_DATABASE_ENGINE'.format(service_name)),
+        engines['sqlite'])
     name = os.getenv('{}_DATABASE_NAME'.format(service_name))
     if not name and engine == engines['sqlite']:
         name = os.path.join(settings.BASE_DIR, 'db.sqlite3')

@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
+from . import database
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -40,7 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Libraries
     'oidc_auth',
+
+    # Apps
+    'home',
+    'people',
+    'sdb',
 ]
 
 MIDDLEWARE = [
@@ -80,7 +89,9 @@ ROOT_URLCONF = 'simdb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -99,12 +110,12 @@ WSGI_APPLICATION = 'simdb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-from . import database
-
 DATABASES = {
     'default': database.config(),
     'sdb': database.config('SDB'),
 }
+
+DATABASE_ROUTERS = ['sdb.utils.SdbRouter']
 
 
 # Password validation
@@ -145,3 +156,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
