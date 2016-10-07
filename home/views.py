@@ -7,3 +7,7 @@ def home(request):
     return render(request, 'home/home.html', {
         '15sof': ''
     })
+
+
+def about(request):
+    return render(request, 'home/about.html')

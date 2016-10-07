@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Simmons DB{% endblock %}
+{% block pagetitle %}About the Simmons DB{% endblock %}
+
+{% block content %}
+<table class="about">
+  <tr>
+    <td rowspan="2">
+      <span class="title">
+        <a href="mailto:simmons-tech@mit.edu">Administrators
+          (IT Committee)</a>:</span>
+      <ul class="names">
+        <li>Sample Person (Committee Chair)</li>
+        <li>Sample Person</li>
+        <li>Sample Person</li>
+      </ul>
+      <p style="font-style:italic">
+        Want to help make the Simmons DB better?<br />
+        Then join the <a href="mailto:simmons-tech@mit.edu">IT Committee!</a>
+      </p>
+    </td>
+    <td rowspan="2">
+      <span class="title">
+        <a href="mailto:simmons-moderators@mit.edu">Moderators</a>:</span>
+      <ul class="names">
+        <li>Sample Person</li>
+        <li>Sample Person</li>
+      </ul>
+    </td>
+    <td>
+      <span class="title">GovTracker House Committee Editors:</span>
+      <ul class="names">
+        <li>Sample Person</li>
+        <li>Sample Person</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="title">GovTracker Financial Editors:</span>
+      <ul class="names">
+        <li>Sample Person</li>
+        <li>Sample Person</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3" style="padding-top: 4ex">
+      <span class="title">Technical specs:</span><br /></td>
+  </tr>
+</table>
+{% endblock %}

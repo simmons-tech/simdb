@@ -84,7 +84,7 @@ OIDC_AUTH = {
     'SCOPES': ('openid', 'profile', 'email'),
 }
 
-ROOT_URLCONF = 'simdb.urls'
+ROOT_URLCONF = 'simdb.urlsdummy'
 
 TEMPLATES = [
     {
