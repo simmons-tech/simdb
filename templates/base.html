@@ -5,14 +5,45 @@
   <head>
     <title>{% block title %}Simmons DB{% endblock %}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <link rel="stylesheet" href="{% static 'css/simmons.css' %}" type="text/css" />  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/simmons.css' %}" type="text/css" />
   </head>
   <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <div class="navbar-brand">
+            <img style="display: inline; height: 50px;" src="{% static 'img/logo_circular.png' %}">
+            <div style="display: inline-block; vertical-align: middle; height: 29px; margin-left: 10px">
+              SIMMONS
+              <span style="font-size: 33pt; position: relative; top: 3px; margin-left: -8px;">/</span>
+              <span style="font-size: 25pt; color: #222; margin-left: -6px; font-weight: 700;" onclick="$(this).hide(); $('#masthead-input').show().focus().select()">{% block pagetitle %}SIMDB{% endblock %}
+              </span>
+              <input id="masthead-input" onclick="$(this).select()" style="display: none" value="HOME" />
+            </div>
+          </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="./">{{ request.user.username }}</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+{% block content %}
+{% endblock %}
+    </div>
+
+    <!--
+
     <div class="titlebar">
       <table width="100%">
         <tr>
           <td>
-            <h1>{% block pagetitle %}Welcome to the Simmons DB{% endblock %}</h1>
+            <h1></h1>
           </td>
           <td style="text-align:right">
             Current Login: {{ request.user.username }}
@@ -34,8 +65,7 @@
             </ul>
           </td>
           <td style="vertical-align:top;width:100%">
-{% block content %}
-{% endblock %}
+
           </td>
         </tr>
       </table>
@@ -43,6 +73,8 @@
     <div class="footer">
       <hr />
       <a href="{% url 'about' %}">Simmons DB</a>
-    </div>
+    </div>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
 </html>
